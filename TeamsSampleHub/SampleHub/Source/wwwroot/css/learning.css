@@ -115,26 +115,25 @@ ul {
 img.error-logo-ct {
     width: 5.143rem;
     height: 5.701rem;
-    margin-top: 3.125rem;
+    margin-top: 1.875rem;
 }
 .error-red-dot {
     float: left;
     margin: 3.375rem 1rem 0 1rem;
 }
 .error-offshift {
-    margin: 3.375rem 1rem 0 0;
+    margin: 2.125rem 1rem 0 0;
     height: 4.5rem;
     line-height: 1.1;
 }
 .error-off-head {
     font-weight: bold;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     color: #ffffff;
-    margin-top: 13%;
 }
 .error-off-desc {
     height: 13.5rem;
-    margin: 1.25rem 1rem 0 4.5rem;
+    margin: 0.625rem 1rem 0 4.5rem;
     font-size: 1.313rem;
     color: #ffffff;
     text-align: left;
@@ -321,22 +320,66 @@ img.error-logo-ct {
     width: 100%;
 }
 @media screen and (max-width: 26.563rem) {
-    .container {
+        .container {
         padding: 0;
     }
     .banner-logo {
         height: 8.5rem;
     }
-    .design-logo,
     .design-logo-title {
-        margin-top: 4.625rem;
+        margin-top: 4rem;
     }
+        .design-logo {
+        margin-top: 4.375rem;
+    }
+
+    .img-survey {
+        height: auto;
+        width: 13%;
+    }
+
+    .custom-card {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .error-off-head {
+        margin-top: 10%;
+    }
+
     .team-img {
         height: 12.5rem;
     }
+
+    .section4 {
+        height: 16.625rem;
+    }
+
+    .video {
+        height: 11.5rem;
+    }
 }
+
 @media screen and (max-width: 20rem) {
+
     .quote-block {
-        height: 15rem;
+        height: 11.25rem;
+    }
+
+    img.error-logo-ct {
+        margin-top: 1.25rem;
+    }
+
+    .error-off-head {
+        font-size: 0.75rem;
+    }
+
+    .error-off-desc {
+        font-size: 0.625rem;
     }
 }
