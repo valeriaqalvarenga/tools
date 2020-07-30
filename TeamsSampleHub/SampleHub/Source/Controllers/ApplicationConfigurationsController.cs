@@ -36,7 +36,7 @@ namespace BrandHome.Controllers
         }
 
         /// <summary>
-        /// Home Tab
+        /// Sample Hub Tab
         /// </summary>
         /// <returns>current View</returns>
         public IActionResult Index()
@@ -44,6 +44,7 @@ namespace BrandHome.Controllers
             this.telemetry.TrackEvent("Index");
             ViewBag.TeamId = this.configuration["TeamId"];
             ViewBag.TasksAppId = this.configuration["TeamsConfiguration:TasksAppId"];
+            ViewBag.TenantId = this.configuration["AzureAd:TenantId"];
             return this.View();
         }
 
