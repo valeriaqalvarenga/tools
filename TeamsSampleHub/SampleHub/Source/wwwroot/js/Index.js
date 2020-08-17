@@ -49,15 +49,15 @@ function getUserInfo(principalName) {
                 let hrs = myDate.getHours();
                 let greet;
                 if (hrs < 12) {
-                    greet = 'Good Morning, ';
+                    greet = 'Bom dia, ';
                     $('#banner').css('background-image', "url('../images/gudmorning.png')");
                 }
                 else if (hrs >= 12 && hrs <= 17) {
-                    greet = 'Good Afternoon, ';
+                    greet = 'Boa tarde, ';
                     $('#banner').css('background-image', "url('../images/gudafternoon.png')");
                 }
                 else if (hrs >= 17 && hrs <= 24) {
-                    greet = 'Good Evening, ';
+                    greet = 'Boa noite, ';
                     $('#banner').css('background-image', "url('../images/gudevening.png')");
                 }
                 $('#greet').text(greet + userNameArray[0] + '!');
