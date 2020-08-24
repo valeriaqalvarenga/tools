@@ -83,7 +83,7 @@ namespace BrandHome.Helper
         {
             this.telemetry.TrackEvent("GetNewsFromSharePoint");
             string token = await this.GetAuthenticationToken();
-            string endpoint = $"{this.configuration["TenantSharePointSiteUrl"]}/_api/Web/Lists(guid'{this.configuration["ListId"]}')/items";
+            string endpoint = $"{this.configuration["TenantSharePointSiteUrl"]}/_api/Web/Lists(guid'{this.configuration["NewsSharePointListId"]}')/items";
             News news = null;
             var client = this.httpClientFactory.CreateClient("SharePointWebClient");
             using (var request = new HttpRequestMessage(HttpMethod.Get, endpoint))
@@ -108,6 +108,41 @@ namespace BrandHome.Helper
             }
 
             return news;
+        }
+        
+        /// <summary>
+        /// Retrieve banners from SharePoint component
+        /// </summary>
+        /// <returns>Banners object</returns>        
+        public async Task<Banners> GetBannersFromSharePoint()
+        {
+            this.telemetry.TrackEvent("GetBannersFromSharePoint");
+            string token = await this.GetAuthenticationToken();
+            string endpoint = $"{this.configuration["TenantSharePointSiteUrl"]}/_api/Web/Lists(guid'{this.configuration["BannersSharePointListId"]}')/items";
+            Banners banners = null;
+            var client = this.httpClientFactory.CreateClient("SharePointWebClient");
+            using (var request = new HttpRequestMessage(HttpMethod.Get, endpoint))
+            {
+                request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                using (HttpResponseMessage response = await client.SendAsync(request))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        try
+                        {
+                            banners = JsonConvert.DeserializeObject<Banners>(json);
+                        }
+                        catch (Exception ex)
+                        {
+                            this.telemetry.TrackException(ex);
+                        }
+                    }
+                }
+            }
+
+            return banners;
         }
     }
 }

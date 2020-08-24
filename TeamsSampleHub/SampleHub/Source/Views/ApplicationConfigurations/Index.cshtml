@@ -17,7 +17,6 @@
     <script type="text/javascript">
         let teamId = '@ViewBag.TeamId';
         let tasksAppId = '@ViewBag.TasksAppId';
-        let tenantId = '@ViewBag.TenantId';
     </script>
     <script src="~/js/Index.js"></script>
     <script src="~/js/home.js"></script>
@@ -29,8 +28,51 @@
     <div class="container" id="content" style="display:none;">
         <div class="banner-logo">
             <div class="new-logo-banner">
-                <img src="~/images/logo2.svg" alt="logo" class="design-logo">
-                <div class="design-logo-title">Contoso</div>
+                <img src="~/images/energisaLogo.png" alt="logo" class="design-logo">
+                <div class="design-logo-title"></div>
+            </div>
+        </div>
+        <div class="news">                       
+            <div class="carousel3">
+                <div id="news" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner car-card">
+                        <div class="carousel-item active pointer" id="newsLink1">
+                            <div class="car-head" id="bannersTitle1">Contoso is donating 500K face masks to hospitals in NYC </div>
+                            <div class="car-date">March 18, 2020</div>
+                            <img class="d-block w-100" id="bannersImage1" src="~/images/energisaboleto.jpg" alt="First slide">
+                            <div class="car-desc" id="bannersDescription1">
+                                During these tough times, Contoso is stepping up and donating 500K
+                                face masks to hospitals in New York City. Babak
+                                Shammas, the CEO, said “every single one of us in the Contoso family feel like it’s
+                            </div>
+                        </div>
+                        <div class="carousel-item pointer" id="newsLink2">
+                            <div class="car-head" id="bannersTitle2">Contoso is donating 500K face masks to hospitals in NYC </div>
+                            <div class="car-date">March 18, 2020</div>
+                            <img class="d-block w-100" id="bannersImage2" src="~/images/pipa.jpg" alt="Second slide">
+                            <div class="car-desc" id="bannersDescription2">
+                                During these tough times, Contoso is stepping up and donating 500K
+                                face masks to hospitals in New York City. Babak
+                                Shammas, the CEO, said “every single one of us in the Contoso family feel like it’s
+                            </div>
+                        </div>
+                        <div class="carousel-item pointer" id="newsLink3">
+                            <div class="car-head" id="bannersTitle3">Contoso is donating 500K face masks to hospitals in NYC </div>
+                            <div class="car-date">March 18, 2020</div>
+                            <img class="d-block w-100" id="bannersImage3" src="~/images/energisa2.jpg" alt="Third slide">
+                            <div class="car-desc" id="bannersDescription3">
+                                During these tough times, Contoso is stepping up and donating 500K
+                                face masks to hospitals in New York City. Babak
+                                Shammas, the CEO, said “every single one of us in the Contoso family feel like it’s
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#news" data-slide-to="0" class="active"></li>
+                        <li data-target="#news" data-slide-to="1"></li>
+                        <li data-target="#news" data-slide-to="2"></li>
+                    </ol>
+                </div>
             </div>
         </div>
         <div id="banner" class="wish-bg">
@@ -81,15 +123,18 @@
                 </div>
                 <span class="cd2-time time2" id="taskDueDate2"></span>
             </div>
-            <div class="see-more pointer" style="display:none" id="seemoretasks">See more Tasks</div>
+            <div class="see-more pointer" style="display:none" id="seemoretasks">Veja mais tarefas</div>
         </div>
+        @*
         <div class="feedback pointer" id="survey">
             <img src="~/images/How you feeling 2.svg" alt="how are feeling" class="hw-are-u-feeling" />
         </div>
+        *@
+        @*
         <div class="percentages pointer" id="report">
             <div class="ht">
-                <div class="percen-head">ContosoTown Shop 246</div>
-                <div class="see-more2">See more</div>
+                <div class="percen-head">Indicadores</div>
+                <div class="see-more2">Veja mais</div>
             </div>
             <div class="centage-block">
                 <div class="row custom-row vertical rounded">
@@ -116,7 +161,7 @@
                         </div>
                     </div>
                     <div class="pro-card">
-                        <span class="percentage-head">My Sales</span>
+                        <span class="percentage-head">Minhas vendas</span>
                         <div class="progress-bar">
                             <div class="progress-track">
                                 <div class="progress-fill bg-gray">
@@ -129,73 +174,33 @@
                 </div>
             </div>
         </div>
+        *@
         <div class="announcement">
-            <div class="an-head">Announcements</div>
+            <div class="an-head">Anúncios</div>
             <div class="ann-img pointer" id="annoucement">
             </div>
         </div>
-        <div class="working">
-            <div class="working-head">Working Now</div>
-            <div class="start-cht pointer" id="groupChat">Start chat</div>
-            <div class="working-img">
-                <div class="avatars">
-                    <span class="ava">
-                        <img id="memberPicture0" class="avatar" alt-name="img">
-                        <span id="memberName0" class="name"></span>
-                    </span>
-                    <span class="ava">
-                        <img id="memberPicture1" class="avatar" alt-name="img">
-                        <span id="memberName1" class="name"></span>
-                    </span>
-                    <span class="ava">
-                        <img id="memberPicture2" class="avatar" alt-name="img">
-                        <span id="memberName2" class="name"></span>
-                    </span>
-                    <span class="ava">
-                        <img id="memberPicture3" class="avatar" alt-name="img">
-                        <span id="memberName3" class="name"></span>
-                    </span>
-                    <span class="ava">
-                        <img id="memberPicture4" class="avatar" alt-name="img">
-                        <span id="memberName4" class="name"></span>
-                    </span>
-                </div>
+        @*
+        <div class="section4">
+            <div class="video-head">Homenagem ao dia do Eletricista</div>
+            <div class="video">
+                <iframe class="vd-stream" frameBorder="0" id="stream">
+                </iframe>
             </div>
-        </div>
-        <div class="new-team">New Team Members</div>
-        <div class="row custom-row">
-            <div class="profile-card">
-                <div class="card3">
-                    <img class="card-img-top img-top" alt="Card image cap" width="400" id="newMemberPicture0">
-                    <div class="card-body cb">
-                        <h4 class="card-title ct mb-0" id="newMemberName0"></h4>
-                        <p class="card-text designation" id="newMemberDesignation0"></p>
-                    </div>
-                    <a id="newMemberChat0" class="btn hi pointer">Say hi</a>
-                </div>
-            </div>
-            <div class="profile-card">
-                <div class="card3">
-                    <img class="card-img-top img-top" alt="Card image cap" width="400" id="newMemberPicture1">
-                    <div class="card-body cb">
-                        <h4 class="card-title ct mb-0" id="newMemberName1"></h4>
-                        <p class="card-text designation" id="newMemberDesignation1"></p>
-                    </div>
-                    <!-- <button class="btn br mr-2 align-self-center">Say hi</button> -->
-                    <a id="newMemberChat1" class="btn hi pointer">Say hi</a>
-                </div>
-            </div>
-        </div>
+        </div>*@
+
+
+
         <div class="news">
-            <div class="news-head">News</div>
-            <div class="see-more3 pointer" id="news">See more</div>
+            <div class="news-head">Notícias</div>
+            <div class="see-more3 pointer" id="news">Veja mais</div>
             <div class="carousel3">
                 <div id="news" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner car-card">
                         <div class="carousel-item active pointer" id="newsLink1">
                             <div class="car-head" id="newsTitle1">Contoso is donating 500K face masks to hospitals in NYC </div>
                             <div class="car-date">March 18, 2020</div>
-                            <img class="d-block w-100" src="~/images/news1.jfif" alt="First slide">
+                            <img class="d-block w-100" id="newsImage1" src="~/images/energisaboleto.jpg" alt="First slide">
                             <div class="car-desc" id="newsDescription1">
                                 During these tough times, Contoso is stepping up and donating 500K
                                 face masks to hospitals in New York City. Babak
@@ -205,7 +210,7 @@
                         <div class="carousel-item pointer" id="newsLink2">
                             <div class="car-head" id="newsTitle2">Contoso is donating 500K face masks to hospitals in NYC </div>
                             <div class="car-date">March 18, 2020</div>
-                            <img class="d-block w-100" src="~/images/news2.png" alt="Second slide">
+                            <img class="d-block w-100" id="newsImage2" src="~/images/pipa.jpg" alt="Second slide">
                             <div class="car-desc" id="newsDescription2">
                                 During these tough times, Contoso is stepping up and donating 500K
                                 face masks to hospitals in New York City. Babak
@@ -215,7 +220,7 @@
                         <div class="carousel-item pointer" id="newsLink3">
                             <div class="car-head" id="newsTitle3">Contoso is donating 500K face masks to hospitals in NYC </div>
                             <div class="car-date">March 18, 2020</div>
-                            <img class="d-block w-100" src="~/images/news3.png" alt="Third slide">
+                            <img class="d-block w-100" id="newsImage3" src="~/images/energisa2.jpg" alt="Third slide">
                             <div class="car-desc" id="newsDescription3">
                                 During these tough times, Contoso is stepping up and donating 500K
                                 face masks to hospitals in New York City. Babak
@@ -231,6 +236,56 @@
                 </div>
             </div>
         </div>
+        <div class="working">
+            <div class="working-head">Working Now</div>
+            <div class="start-cht pointer" id="groupChat">Conversar</div>
+            <div class="working-img">
+                <div class="avatars">
+                    <span class="ava">
+                        <img id="memberPicture0" class="avatar" alt-name="img" src="~/images/image2.jpg">
+                        <span id="memberName0" class="name"></span>
+                    </span>
+                    <span class="ava">
+                        <img id="memberPicture1" class="avatar" alt-name="img" src="~/images/image1.jpg">
+                        <span id="memberName1" class="name"></span>
+                    </span>
+                    <span class="ava">
+                        <img id="memberPicture2" class="avatar" alt-name="img" src="~/images/image5.jpg">
+                        <span id="memberName2" class="name"></span>
+                    </span>
+                    <span class="ava">
+                        <img id="memberPicture3" class="avatar" alt-name="img" src="~/images/image4.jpg">
+                        <span id="memberName3" class="name"></span>
+                    </span>
+                    <span class="ava">
+                        <img id="memberPicture4" class="avatar" alt-name="img" src="~/images/image8.jpg">
+                        <span id="memberName4" class="name"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="new-team">Nossos bots</div>
+        <div class="row custom-row">
+            <div class="profile-card">
+                <div class="card3">
+                    <img class="card-img-top img-top" alt="Card image cap" width="400" src="~/images/iconeGlobo.png">
+                    <div class="card-body cb">
+                        <h4 class="card-title ct mb-0" id="newMemberName0">Viagens</h4>
+                    </div>
+                    <a id="newMemberChat0" class="btn hi pointer">Acessar</a>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="card3">
+                    <img class="card-img-top img-top" alt="Card image cap" width="400" src="~/images/iconeRH.png">
+                    <div class="card-body cb">
+                        <h4 class="card-title ct mb-0" id="newMemberName1">RH</h4>
+                    </div>
+                    <!-- <button class="btn br mr-2 align-self-center">Say hi</button> -->
+                    <a id="newMemberChat1" class="btn hi pointer">Acessar</a>
+                </div>
+            </div>
+        </div>
         <div class="apps">
             <div class="row custom-row">
                 <div class="app-card">
@@ -238,8 +293,8 @@
                         <img class="card-img-top img-top app-img" src="~/images/Paystub.png" alt="Card image cap"
                              width="400">
                         <div class="card-body cb">
-                            <h4 class="card-title ct mb-0 app-head">Paystubs</h4>
-                            <p class="card-text designation app-desc">All your pay stubs organized here.</p>
+                            <h4 class="card-title ct mb-0 app-head">Reserva de Mesas</h4>
+                            <p class="card-text designation app-desc">Reserve sua mesa para sua próxima visita ao escritório.</p>
                         </div>
                     </div>
                 </div>
@@ -248,8 +303,8 @@
                         <img class="card-img-top img-top app-img" src="~/images/Benefits.png" alt="Card image cap"
                              width="400">
                         <div class="card-body cb">
-                            <h4 class="card-title ct mb-0 app-head">Benefits</h4>
-                            <p class="card-text designation app-desc">Access all your benefits.</p>
+                            <h4 class="card-title ct mb-0 app-head">Benefícios</h4>
+                            <p class="card-text designation app-desc">Acesse todos os seus benefícios.</p>
                         </div>
                     </div>
                 </div>
@@ -260,8 +315,8 @@
                         <img class="card-img-top img-top app-img" src="~/images/Rewards.png" alt="Card image cap"
                              width="400">
                         <div class="card-body cb">
-                            <h4 class="card-title ct mb-0 app-head">Rewards</h4>
-                            <p class="card-text designation app-desc">Learn about special offers available to you.</p>
+                            <h4 class="card-title ct mb-0 app-head">Folheto de Padrão de Entrada</h4>
+                            <p class="card-text designation app-desc">Instalação em muro com poste auxiliar duplo T ou de aço galvanizado</p>
                         </div>
                     </div>
                 </div>
@@ -270,17 +325,19 @@
                         <img class="card-img-top img-top app-img" src="~/images/Kudos.png" alt="Card image cap"
                              width="400">
                         <div class="card-body cb">
-                            <h4 class="card-title ct mb-0 app-head">Kudos</h4>
-                            <p class="card-text designation app-desc">Recognize your coworkers.</p>
+                            <h4 class="card-title ct mb-0 app-head">Manuais</h4>
+                            <p class="card-text designation app-desc">Acesse os manuais da equipe</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="bt-brand">
-            <img src="~/images/Bottom Brand Home.svg" alt="Brand" class="brand-img">
+            <img src="~/images/energisa-do-bem.svg" alt="Brand" class="brand-img">
+        </div>        
+        <div class="developedBy">
+            <div class="developedBy-head">Developed by DXC Technology and Microsoft</div>
         </div>
-    </div>
 </body>
 <script src="~/lib/popper.js/umd/popper.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>

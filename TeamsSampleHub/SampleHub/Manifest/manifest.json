@@ -1,15 +1,14 @@
 ﻿{
   "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.5/MicrosoftTeams.schema.json",
-  "manifestVersion": "1.5",
-  "version": "1.1.1",
+  "manifestVersion": "1.7",
+  "version": "1.1.4",
   "id": "e197a778-9520-4019-9894-7adac76d5397",
   "packageName": "com.contoso.helloworld",
   "developer": {
     "name": "Microsoft",
     "websiteUrl": "https://www.microsoft.com",
     "privacyUrl": "https://www.microsoft.com/privacy",
-    "termsOfUseUrl": "https://www.microsoft.com/termsofuse",
-    "mpnId": "{your mpnID}"
+    "termsOfUseUrl": "https://www.microsoft.com/termsofuse"
   },
   "name": {
     "short": "Sample Hub",
@@ -26,19 +25,13 @@
   "accentColor": "#60A18E",
   "staticTabs": [
     {
-      "entityId": "Hub",
-      "name": "Hub",
-      "contentUrl": "{url}",
-      "scopes": [ "personal" ]
-    },
-    {
-      "entityId": "Learning",
-      "name": "Learning",
-      "contentUrl": "{url}",
+      "entityId": "Sample Hub",
+      "name": "Sample Hub",
+      "contentUrl": "https://cd88e076d49a.ngrok.io",
       "scopes": [ "personal" ]
     }
   ],
   "permissions": ["identity", "messageTeamMembers"],
-  "validDomains": [""]
+  "validDomains": [ "cd88e076d49a.ngrok.io" ]
   
 }

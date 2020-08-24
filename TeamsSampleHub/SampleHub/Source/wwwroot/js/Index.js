@@ -14,11 +14,11 @@ function successfulLogin() {
     microsoftTeams.getContext(function (context) {
         getUserInfo(context.userPrincipalName);
         getShiftDetails(context.userObjectId);
-        loadTeamMembers(context.userPrincipalName);
+       loadTeamMembers(context.userPrincipalName);
     });
     getTeamsConfiguration();
     loadNewsData();
-    loadAnnoucement();
+    //loadAnnoucement();
 }
 
 function enableLogin() {
@@ -64,15 +64,15 @@ function getUserInfo(principalName) {
                 let hrs = myDate.getHours();
                 let greet;
                 if (hrs < 12) {
-                    greet = 'Good Morning, ';
+                    greet = 'Bom dia, ';
                     $('#banner').css('background-image', "url('../images/gudmorning.png')");
                 }
                 else if (hrs >= 12 && hrs <= 17) {
-                    greet = 'Good Afternoon, ';
+                    greet = 'Boa tarde, ';
                     $('#banner').css('background-image', "url('../images/gudafternoon.png')");
                 }
                 else if (hrs >= 17 && hrs <= 24) {
-                    greet = 'Good Evening, ';
+                    greet = 'Boa noite, ';
                     $('#banner').css('background-image', "url('../images/gudevening.png')");
                 }
                 $('#greet').text(greet + userNameArray[0] + '!');
@@ -119,22 +119,23 @@ function getShiftDetails(objectId) {
         let shift = graphTemp.find(s => (s.userId === objectId) && ((s.sharedShift.startDateTime <= dateTimeNow && s.sharedShift.endDateTime >= dateTimeNow) || s.sharedShift.startDateTime >= dateTimeNow));
         if (shift) {
             if (shift.sharedShift.startDateTime >= dateTimeNow) {
-                $('#tasksCount').text('Your next shift is:');
-                $('#tasks').hide();
-                $('#survey').hide();
+                $('#tasksCount').text('Seu próximo turno é:');
+                getTaskDetails();
+                $('#tasks').show();
+                $('#survey').show();
             }
             else {
                 getTaskDetails();
                 $('#tasks').show();
                 $('#survey').show();
-                $('#tasksCount').text('Enjoy your shift and review the tasks assigned to you.');
+                $('#tasksCount').text('Aproveite o seu turno e reveja as tarefas atribuídas a você.');
             }
             setShiftCard(shift);
         }
         else {
-            $('#shiftHours').text('No upcoming shifts are available');
-            $('#tasks').hide();
-            $('#survey').hide();
+            $('#shiftHours').text('Não há turnos disponíveis.');
+            $('#tasks').show();
+            $('#survey').show();
         }
     }
 }
@@ -209,14 +210,15 @@ function getTeamsConfiguration() {
         },
         success: function (response) {
             if (response !== null) {
-                $('#payStubs').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.payStubsAppId + "/payslipsviewer');");
-                $('#benefits').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.benefitsAppId + "/benefits');");
-                $('#rewards').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.rewardsAppId + "/rewards');");
-                $('#kudos').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.kudosAppId + "/kudos');");
+                $('#payStubs').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.payStubsAppId + "/5e5b262b-a205-4e8b-8f23-a05e1ea237fb');");
+                $('#benefits').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.benefitsAppId + "/eb72c432-7789-467a-9867-aa1243023aa4');");
+                $('#rewards').attr('onclick', "microsoftTeams.executeDeepLink('https://teams.microsoft.com/l/file/AA1A883E-3580-4E6C-9868-D48AD5E4B07A?tenantId=04e9115d-32bf-4fd8-879d-aeb09ec6ecfc&fileType=pdf&objectUrl=https%3A%2F%2Fm365valeria.sharepoint.com%2Fsites%2FEnergisa%2FDocumentos%20Compartilhados%2FGeneral%2FManuais%2FFolheto.pdf&baseUrl=https%3A%2F%2Fm365valeria.sharepoint.com%2Fsites%2FEnergisa&serviceName=teams&threadId=19:e844faad6db14701bfed0916def361bc@thread.tacv2&groupId=a9de951d-01e6-4f3f-964c-ba2c06f958ef');");                
+                $('#kudos').attr('onclick', "microsoftTeams.executeDeepLink('https://teams.microsoft.com/l/channel/19%3abfa10d943a394f30977ed0957e2b7589%40thread.tacv2/Manuais?groupId=a9de951d-01e6-4f3f-964c-ba2c06f958ef&tenantId=04e9115d-32bf-4fd8-879d-aeb09ec6ecfc');");                
                 $('#news,#newsLink1,#newsLink2,#newsLink3').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.newsAppId + "/news');");
                 $('#shifts').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.shiftsAppId + "/schedule');");
                 $('#survey').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.surveyAppId + "/surveys');");
                 $('#report').attr('onclick', "microsoftTeams.executeDeepLink('" + response.deepLinkBaseUrl + response.reportAppId + "/report');");
+                
             } else {
                 console.log("Something went wrong");
             }
@@ -252,20 +254,20 @@ function loadTeamMembers(mailId) {
                     let newMembers = response.splice(0, 2);
                     $.each(response, function (i, item) {
                         $('#memberName' + counter).text(item.givenName);
-                        $('#memberPicture' + counter).attr('src', item.profilePhotoUrl);
+                        //$('#memberPicture' + counter).attr('src', item.profilePhotoUrl);
                         groupEmail.push(item.userPrincipalName);
                         counter++;
                         if (counter === 5) {
                             return false;
                         }
                     });
-                    $('#groupChat').attr('onclick', "microsoftTeams.executeDeepLink('" + chatUrl + groupEmail.toString() + "&topicName=" + encodeURIComponent("On-Shift Crew") + "&message=Hi');");
+                    $('#groupChat').attr('onclick', "microsoftTeams.executeDeepLink('" + chatUrl + groupEmail.toString() + "&topicName=" + encodeURIComponent("On-Shift Crew")+"&message=Hi');");
                     $.each(newMembers, function (i, item) {
-                        $('#newMemberName' + i).text(item.givenName);
-                        $('#newMemberDesignation' + i).text(item.jobTitle);
-                        $('#newMemberPicture' + i).attr('src', item.profilePhotoUrl);
-                        $('#newMemberChat' + i).attr('onclick', "microsoftTeams.executeDeepLink('" + chatUrl + item.userPrincipalName + "');");
-                    });
+                        //$('#newMemberName' + i).text(item.givenName);
+                       // $('#newMemberDesignation' + i).text(item.jobTitle);
+                        //$('#newMemberPicture' + i).attr('src', item.profilePhotoUrl);
+                        $('#newMemberChat' + i).attr('onclick', "microsoftTeams.executeDeepLink('https://teams.microsoft.com/l/chat/0/0?users=28:9a4d51b4-7550-4601-99fe-9be768fac8cc');");
+                   });
                 }
             },
             failure: function (response) {
@@ -290,6 +292,7 @@ function loadAnnoucement() {
         dataType: "json",
         success: function (response) {
             if (response !== null) {
+                console.log(response);
                 let data = response.value;
                 let counter = 0;
                 let rowKey;
@@ -301,10 +304,11 @@ function loadAnnoucement() {
                         counter++;
                     }
                     if (item.partitionKey === 'SentNotifications' && !!item.teamsInString && item.rowKey === rowKey) {
-                        let channelId = item.teamsInString;
-                        channelId = channelId.replace('["', "");
-                        channelId = channelId.replace('"]', "");
-                        $('#annoucement').attr('onclick', "microsoftTeams.executeDeepLink('" + channelUrl + encodeURIComponent(channelId) + "/General?groupId=" + teamId + "&tenantId=" + tenantId + "');");
+                        let teamsId = item.teamsInString;
+                        teamsId = teamsId.replace('["', "");
+                        teamsId = teamsId.replace('"]', "");
+                        //$('#annoucement').attr('onclick', "microsoftTeams.executeDeepLink('" + channelUrl + encodeURIComponent(teamsId) + "/General?groupId=7efb60ac-63c6-46e2-8645-8ea283dbfd61&tenantId=c80f38d3-c04c-49bf-a48b-9d99278d4ac6');");
+                        $('#annoucement').attr('onclick', "microsoftTeams.executeDeepLink('https://teams.microsoft.com/l/channel/19%3ae844faad6db14701bfed0916def361bc%40thread.tacv2/Geral?groupId=a9de951d-01e6-4f3f-964c-ba2c06f958ef&tenantId=04e9115d-32bf-4fd8-879d-aeb09ec6ecfc');");
                         counter++;
                     }
                     if (counter === 2) {
@@ -333,6 +337,37 @@ function loadAnnoucement() {
     });
 }
 
+function loadBannersData() {
+    $.ajax({
+        type: "GET",
+        url: "/BannersData",
+        beforeSend: function (request) {
+            request.setRequestHeader("Authorization", "Bearer " + idToken);
+        },
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function (response) {
+            console.log(response);
+            $('#bannersTitle1').text(response.valuebanners[0].title);
+            $('#bannersDescription1').text(response.valuebanners[0].description);
+           // $("#bannersImage1").attr("src", response.valuebanners[0].image);
+            $('#bannersTitle2').text(response.valuebanners[1].title);
+            $('#bannersDescription2').text(response.valuebanners[1].description);
+            //$("#bannersImage2").attr("src", response.valuebanners[1].image);
+            $('#bannersTitle3').text(response.valuebanners[2].title);
+            $('#bannersDescription3').text(response.valuebanners[2].description);
+            //$("#bannersImage3").attr("src", response.valuebanners[2].image);
+
+        },
+        failure: function (response) {
+            console.log(response.responseText);
+        },
+        error: function (response) {
+            console.log('Error occured while getting banners data' + response.responseText);
+        }
+    });
+}
+
 function loadNewsData() {
     $.ajax({
         type: "GET",
@@ -343,12 +378,17 @@ function loadNewsData() {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            $('#newsTitle1').text(response.value[3].title);
-            $('#newsDescription1').text(response.value[3].description);
-            $('#newsTitle2').text(response.value[4].title);
-            $('#newsDescription2').text(response.value[4].description);
-            $('#newsTitle3').text(response.value[5].title);
-            $('#newsDescription3').text(response.value[5].description);
+            console.log(response);
+            $('#newsTitle1').text(response.value[0].title);
+            $('#newsDescription1').text(response.value[0].description);
+            // $("#newsImage1").attr("src", response.value[0].image);            
+            $('#newsTitle2').text(response.value[1].title);
+            $('#newsDescription2').text(response.value[1].description);
+            //$("#newsImage2").attr("src", response.value[1].image);            
+            $('#newsTitle3').text(response.value[2].title);
+            $('#newsDescription3').text(response.value[2].description);
+            //$("#newsImage3").attr("src", response.value[2].image);
+
         },
         failure: function (response) {
             console.log(response.responseText);
@@ -358,7 +398,6 @@ function loadNewsData() {
         }
     });
 }
-
 
 function sortShifts(a, b) {
     let dateA = new Date(a.sharedShift.startDateTime);

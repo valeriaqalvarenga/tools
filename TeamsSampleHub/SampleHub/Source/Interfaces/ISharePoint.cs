@@ -23,5 +23,11 @@ namespace BrandHome.Interfaces
         /// </summary>
         /// <returns>Task News</returns>
         Task<News> GetNewsFromSharePoint();
+
+        /// <summary>
+        /// Declaration of method.
+        /// </summary>
+        /// <returns>Task Banners</returns>
+        Task<Banners> GetBannersFromSharePoint();
     }
 }

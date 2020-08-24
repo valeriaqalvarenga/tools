@@ -1,37 +1,37 @@
-﻿// <copyright file="News.cs" company="Microsoft">
+﻿// <copyright file="Banners.cs" company="Microsoft">
 // Copyright (c) Microsoft. All Rights Reserved.
 // </copyright>
 
 namespace BrandHome.Models
 {
     /// <summary>
-    /// News Model
+    /// Banners Model
     /// </summary>
-    public class News
+    public class Banners
     {
         /// <summary>
-        /// Gets or sets SharePoint News component array value
+        /// Gets or sets SharePoint Banners component array value
         /// </summary>
         public Value[] Value { get; set; }
     }
 
     /// <summary>
-    /// News item model for SharePoint component
+    /// Banners item model for SharePoint component
     /// </summary>
-    public class Value
+    public class ValueBanners
     {
         /// <summary>
-        /// Gets or sets SharePoint News Title
+        /// Gets or sets SharePoint Banners Title
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
-        /// Gets or sets SharePoint News Description
+        /// Gets or sets SharePoint Banners Description
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets SharePoint News Link
+        /// Gets or sets SharePoint Banners Link
         /// </summary>
         public string Image { get; set; }
     }

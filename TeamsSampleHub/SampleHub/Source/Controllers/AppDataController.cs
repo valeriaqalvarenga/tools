@@ -96,6 +96,25 @@ namespace BrandHome.Controllers
         }
 
         /// <summary>
+        /// Get Banners Data from SharePoint component
+        /// </summary>
+        /// <returns>Return Banners Data</returns>
+        [HttpGet("BannersData")]
+        public async Task<ActionResult<Banners>> GetBannersDataAsync()
+        {
+            this.telemetry.TrackEvent("GetBannersData");
+            try
+            {
+                return await this.sharePoint.GetBannersFromSharePoint();
+            }
+            catch (Exception ex)
+            {
+                this.telemetry.TrackException(ex);
+                return null;
+            }
+        }
+
+        /// <summary>
         /// Retrieve team members along with profile pictures
         /// </summary>
         /// <param name="tokenResponse">User Access token</param>
